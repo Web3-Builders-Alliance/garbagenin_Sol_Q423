@@ -8,7 +8,6 @@ import {
 } from "@solana/web3.js";
 import wallet from "../wba-wallet.json";
 import {
-  collectionDetails,
   createMetadataAccountV3,
   updateMetadataAccountV2,
 } from "@metaplex-foundation/mpl-token-metadata";
@@ -56,7 +55,7 @@ const [metadata_pda, _bump] = PublicKey.findProgramAddressSync(
 
 (async () => {
   try {
-    const tx = await createMetadataAccountV3(umi, {
+    const tx = createMetadataAccountV3(umi, {
       metadata: publicKey(metadata_pda.toString()),
       mint: publicKey(mint.toString()),
       mintAuthority: keypairEddsaSigner,
